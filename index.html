@@ -21,24 +21,6 @@
 			object.matrix.setRotationFromQuaternion(quaternion);
 				object.matrix.setPosition(start_position);
 				object.matrixAutoUpdate = false;
-			
-			//Create cube camera
-			var cubeCamera = new THREE.CubeCamera( 1, 100000, 128 );
-			scene.add( cubeCamera );
-
-			//Create car
-			var chromeMaterial = new THREE.MeshLambertMaterial( { color: 0xffffff, envMap: cubeCamera.renderTarget } );
-			var car = new Mesh( carGeometry, chromeMaterial );
-			scene.add( car );
-
-			//Update the render target cube
-			car.setVisible( false );
-			cubeCamera.position.copy( car.position );
-			cubeCamera.updateCubeMap( renderer, scene );
-
-			//Render the scene
-			car.setVisible( true );
-			renderer.render( scene, camera );
 
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );
