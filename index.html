@@ -11,6 +11,16 @@
 		<script>
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+			
+			object.position.copy(start_position);
+				object.quaternion.copy(quaternion);
+			
+			object.updateMatrix();
+			object.matrixAutoUpdate = false;
+			
+			object.matrix.setRotationFromQuaternion(quaternion);
+				object.matrix.setPosition(start_position);
+				object.matrixAutoUpdate = false;
 
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );
